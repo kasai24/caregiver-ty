@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're in — Caregiver Companion</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; text-align: left !important; }
+
+  html {
+    width: 100%;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.5rem 1rem 3rem;
+    margin: 0;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* ── WRAP ── */
+  .wrap {
+    max-width: 540px;
+    width: 100%;
+  }
+
+  /* ── CONFIRM BLOCK ── */
+  .confirm {
+    text-align: center !important;
+    padding: 0 0 1.75rem;
+  }
+
+  .check-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #FFF8D6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  .check-circle svg {
+    width: 22px;
+    height: 22px;
+    stroke: #1a1a1a;
+    stroke-width: 2.5;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .confirm h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    text-align: center !important;
+  }
+
+  .confirm p {
+    font-size: 15px;
+    color: #888;
+    line-height: 1.5;
+    text-align: center !important;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid #f0f0f0;
+    margin: 0 0 1.5rem;
+  }
+
+  /* ── OFFER BLOCK ── */
+  .offer {
+    background: #ffffff;
+    border-radius: 14px;
+    border: 1.5px solid #e8e8e8;
+    padding: 1.75rem 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #b8920a;
+    margin-bottom: 0.6rem;
+  }
+
+  .offer h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1a1a1a;
+    line-height: 1.15;
+    margin-bottom: 1.1rem;
+    letter-spacing: -0.03em;
+  }
+
+  .offer-body {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    text-align: left !important;
+  }
+
+  .offer-narrow {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.75;
+    margin-bottom: 1.3rem;
+    text-align: left !important;
+  }
+
+  .offer-intro {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.75;
+    margin-bottom: 1.1rem;
+    text-align: left !important;
+  }
+
+  /* ── BULLETS ── */
+  .bullets {
+    list-style: none;
+    margin-bottom: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.5;
+  }
+
+  .bullets li .icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    width: 20px;
+    height: 20px;
+    background: #F6C417;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bullets li .icon svg {
+    width: 11px;
+    height: 11px;
+    stroke: #1a1a1a;
+    stroke-width: 3;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .bullets li strong {
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  /* ── SCARCITY ── */
+  .scarcity {
+    font-size: 14px;
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 1.1rem;
+  }
+
+  /* ── BUTTON ── */
+  .cta-btn {
+    display: block;
+    width: 100%;
+    padding: 0.9rem 1rem;
+    background: #F6C417;
+    color: #1a1a1a;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center !important;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: background 0.15s ease;
+  }
+
+  .cta-btn:hover {
+    background: #e0b010;
+  }
+
+  .micro {
+    font-size: 11px;
+    color: #bbb;
+    text-align: center !important;
+    margin-top: 0.85rem;
+    line-height: 1.5;
+  }
+
+  /* ── TRUST ROW ── */
+  .trust-row {
+    display: flex;
+    border: 1.5px solid #e8e8e8;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fafafa;
+  }
+
+  .trust-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 0.85rem 0.5rem;
+    background: #fafafa;
+  }
+
+  .trust-item + .trust-item {
+    border-left: 1.5px solid #e8e8e8;
+  }
+
+  .trust-item svg {
+    width: 20px;
+    height: 20px;
+    stroke: #aaa;
+    stroke-width: 1.75;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .trust-label {
+    font-size: 12px;
+    color: #666;
+    text-align: center !important;
+    line-height: 1.35;
+  }
+
+  @media (max-width: 420px) {
+    body { padding: 1rem 1rem 2rem; }
+    .confirm { padding: 0 0 1.25rem; }
+    .check-circle { width: 40px; height: 40px; margin-bottom: 0.6rem; }
+    .confirm h1 { font-size: 18px; }
+    .divider { margin-bottom: 1rem; }
+    .offer { padding: 1.1rem 1rem; }
+    .offer h2 { font-size: 21px; margin-bottom: 0.75rem; }
+    .offer-body, .offer-narrow, .offer-intro { font-size: 13.5px; line-height: 1.55; margin-bottom: 0.75rem; }
+    .bullets { gap: 7px; margin-bottom: 0.9rem; }
+    .bullets li { font-size: 13px; line-height: 1.4; }
+    .scarcity { font-size: 12.5px; margin-bottom: 0.85rem; }
+    .cta-btn { font-size: 15px; padding: 0.8rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- CONFIRM -->
+  <div class="confirm">
+    <div class="check-circle">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h1>You're in — your guide is on its way.</h1>
+    <p>Check your inbox in the next few minutes.<br>Don't see it? Check your spam folder.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- OFFER -->
+  <div class="offer">
+    <p class="eyebrow">While you wait</p>
+    <h2>Are you leaving money on the table?</h2>
+    <p class="offer-body">Most family caregivers are. Between programs, benefits, and coverage options, there's often cash and support going unclaimed.</p>
+    <p class="offer-narrow">If you're caring for a parent or loved one 60+ in the US, there's a good chance you're missing something.</p>
+    <p class="offer-intro">I'm piloting a free Money &amp; Benefits Checkup with a licensed specialist to help caregivers:</p>
+    <ul class="bullets">
+      <li>
+        <span class="icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span><strong>See if your family is missing money or paying too much</strong> — on coverage or programs</span>
+      </li>
+      <li>
+        <span class="icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span><strong>Find programs or benefits you might be missing</strong> — most caregivers don't know they exist</span>
+      </li>
+      <li>
+        <span class="icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span><strong>Get clear on exactly what to do next</strong> — no jargon, no runaround</span>
+      </li>
+    </ul>
+    <p class="scarcity">No cost, no obligation, no pressure. I'm only running this with a small group of caregivers while we test it.</p>
+    <a href="YOUR_INTAKE_FORM_LINK_HERE" class="cta-btn">Start my free checkup →</a>
+    <p class="micro">Takes about 90 seconds to see if you qualify &nbsp;·&nbsp; Free &nbsp;·&nbsp; No obligation</p>
+  </div>
+
+  <!-- TRUST -->
+  <div class="trust-row">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span class="trust-label">Free &amp;<br>confidential</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="18" x2="12" y2="18"/><polyline points="14 2 14 8 20 8"/></svg>
+      <span class="trust-label">No obligation<br>whatsoever</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><polyline points="16 11 17 13 20 10"/></svg>
+      <span class="trust-label">Licensed<br>specialist</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
